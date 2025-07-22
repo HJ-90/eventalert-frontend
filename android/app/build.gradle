@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.everyoung.eventalert.devclient'
+    namespace 'com.khj90.eventalert'
     defaultConfig {
-        applicationId 'com.everyoung.eventalert.devclient'
+        applicationId 'com.khj90.eventalert'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

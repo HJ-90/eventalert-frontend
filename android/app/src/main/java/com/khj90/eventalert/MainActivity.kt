@@ -1,4 +1,4 @@
-package com.everyoung.eventalert.devclient
+package com.khj90.eventalert
 
 import android.os.Build
 import android.os.Bundle
