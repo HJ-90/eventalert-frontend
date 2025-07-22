@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "577463997022",
+    "project_id": "event-alert-prod",
+    "storage_bucket": "event-alert-prod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577463997022:android:fe372a59eeb1a6f1225acf",
+        "android_client_info": {
+          "package_name": "com.everyoung.eventalert.devclient"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcMtjUB60ax2lH4tnMxbK7NZYY5d8lCFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577463997022:android:1a0ef9c888181b99225acf",
+        "android_client_info": {
+          "package_name": "com.everyoung.eventalert.eventalert.myadminapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcMtjUB60ax2lH4tnMxbK7NZYY5d8lCFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577463997022:android:be2675a40cbb7692225acf",
+        "android_client_info": {
+          "package_name": "com.everyoungpp.mobileapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcMtjUB60ax2lH4tnMxbK7NZYY5d8lCFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
