@@ -7,8 +7,12 @@ export default {
     slug: "eventalert",
     scheme: process.env.EXPO_SCHEME,
     extra: {
+        eas: {
+        projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID,
+      },
       fcmTopic: process.env.FCM_TOPIC,
       backendUrl: process.env.BACKEND_URL,
+      firebaseProjectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
     },
     android: {
       package: "com.khj90.eventalert"
@@ -19,7 +23,7 @@ export default {
         "expo-build-properties",
         { android: { googleServicesFile: "./google-services.json" } }
       ]
-    ],
+    ]
   }
 };
 

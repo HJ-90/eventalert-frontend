@@ -46,7 +46,9 @@ export function usePushNotifications() {
     // 3) 토큰 발급 시도
     try {
       console.log('🔍 [Debug] attempting getExpoPushTokenAsync...');
-      const tokenData = await Notifications.getExpoPushTokenAsync();
+      const tokenData = await Notifications.getExpoPushTokenAsync({
+           projectId: Constants.expoConfig?.extra?.eas?.projectId,
+      });
       console.log('✅ Expo Push Token:', tokenData.data);
       return tokenData.data;
     } catch (error) {
