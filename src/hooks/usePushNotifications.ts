@@ -1,5 +1,5 @@
 // src/hooks/usePushNotifications.ts
-
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
@@ -43,13 +43,35 @@ export function usePushNotifications() {
       return null;
     }
 
+    const backendUrl = Constants.expoConfig?.extra?.backendUrl;
+    const fcmTopic = Constants.expoConfig?.extra?.fcmTopic;
+
     // 3) 토큰 발급 시도
     try {
       console.log('🔍 [Debug] attempting getExpoPushTokenAsync...');
       const tokenData = await Notifications.getExpoPushTokenAsync({
            projectId: Constants.expoConfig?.extra?.eas?.projectId,
       });
+
       console.log('✅ Expo Push Token:', tokenData.data);
+
+
+
+      console.log('📤 Sending to backend:', {
+        fcmToken: tokenData.data,
+        userId: 1
+      });
+
+      try {
+          await axios.post(`${backendUrl}/register-token`, {
+            fcmToken: tokenData.data,
+            userId: "1"
+          });
+          console.log('✅ Token successfully registered to backend');
+        } catch (err) {
+          console.error('❌ Failed to register token to backend:', err);
+        }
+
       return tokenData.data;
     } catch (error) {
       console.error('❌ Error getting Expo Push Token:', error);
