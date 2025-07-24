@@ -1,12 +1,16 @@
 // ① React import: TSX 문법 지원을 위해 React 타입 불러오기
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Alert } from 'react-native';
 import { useEffect } from 'react';
 import { registerFCMToken } from './src/firebase/registerFCMToken';
+import messaging from '@react-native-firebase/messaging';
+
 
 
 const App: React.FC = () => {
   useEffect(() => {
+      console.log('🔥 App started')
+
     // FCM 수신 리스너
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('📩 FCM 수신:', remoteMessage);
@@ -18,7 +22,7 @@ const App: React.FC = () => {
 
   registerFCMToken(1);
 
-      return () => subscription.remove();
+      return () => unsubscribe();
     }, []);
 
   return (
