@@ -4,11 +4,11 @@ import 'dotenv/config';
 export default {
   expo: {
     name: "EventAlert",
-    slug: "eventalert",
+    slug: "my-admin-app",
     scheme: process.env.EXPO_SCHEME,
     extra: {
         eas: {
-        projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID,
+        projectId: "9971e6ae-d9e1-415d-b77c-703b3360b072",
       },
       fcmTopic: process.env.FCM_TOPIC,
       backendUrl: process.env.BACKEND_URL,

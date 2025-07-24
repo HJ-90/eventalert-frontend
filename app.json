@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "EventAlertDevClient",
-    "slug": "event-alert-dev-client",
+    "slug": "my-admin-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

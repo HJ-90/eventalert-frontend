@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:577463997022:android:fe372a59eeb1a6f1225acf",
         "android_client_info": {
-          "package_name": "com.khj90.eventalert"
+          "package_name": "com.everyoung.eventalert.devclient"
         }
       },
       "oauth_client": [],
@@ -48,6 +48,25 @@
         "mobilesdk_app_id": "1:577463997022:android:be2675a40cbb7692225acf",
         "android_client_info": {
           "package_name": "com.everyoungpp.mobileapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcMtjUB60ax2lH4tnMxbK7NZYY5d8lCFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577463997022:android:7d5ad09edbaa835d225acf",
+        "android_client_info": {
+          "package_name": "com.khj90.eventalert"
         }
       },
       "oauth_client": [],

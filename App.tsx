@@ -2,10 +2,23 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { usePushNotifications } from './src/hooks/usePushNotifications';  // 경로 확인
+import { useEffect } from 'react';
+import * as Notifications from 'expo-notifications';
 
 
 const App: React.FC = () => {
   const { expoPushToken, permissionStatus } = usePushNotifications();
+
+
+  useEffect(() => {
+      const subscription = Notifications.addNotificationReceivedListener(
+          (notification: Notification) => {
+          console.log('🔔 알림 수신:', notification);
+      }
+  );
+
+      return () => subscription.remove();
+    }, []);
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

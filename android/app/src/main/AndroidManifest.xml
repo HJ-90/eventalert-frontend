@@ -26,6 +26,7 @@
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="exp+eventalert"/>
         <data android:scheme="eventalert"/>
+        <data android:scheme="exp+my-admin-app"/>
       </intent-filter>
     </activity>
   </application>
