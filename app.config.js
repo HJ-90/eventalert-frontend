@@ -5,6 +5,7 @@ export default {
   expo: {
     name: "EventAlert",
     slug: "my-admin-app",
+    owner: 'khj90',
     scheme: process.env.EXPO_SCHEME,
     extra: {
         eas: {
@@ -15,9 +16,12 @@ export default {
       firebaseProjectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
     },
     android: {
-      package: "com.khj90.eventalert"
+      package: "com.khj90.eventalert",
+      googleServicesFile: "./google-services.json"
     },
     plugins: [
+      '@react-native-firebase/app',
+      '@react-native-firebase/messaging',
       "expo-dev-client",
       [
         "expo-build-properties",

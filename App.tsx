@@ -1,32 +1,20 @@
 // ① React import: TSX 문법 지원을 위해 React 타입 불러오기
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { usePushNotifications } from './src/hooks/usePushNotifications';  // 경로 확인
 import { useEffect } from 'react';
-import * as Notifications from 'expo-notifications';
 import { registerFCMToken } from './src/firebase/registerFCMToken';
 
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,   // 🔔 포그라운드에서도 표시하게 만듦
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
-
 const App: React.FC = () => {
-  const { expoPushToken, permissionStatus } = usePushNotifications();
-
-
   useEffect(() => {
-      const subscription = Notifications.addNotificationReceivedListener(
-          notification => {
-                const title = notification.request.content.title;
-                const body = notification.request.content.body;
-                console.log('🔔 알림 수신:', notification);
-                Alert.alert(title ?? '알림', body ?? '내용 없음');
-      });
+    // FCM 수신 리스너
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log('📩 FCM 수신:', remoteMessage);
+      Alert.alert(
+        remoteMessage.notification?.title ?? '알림',
+        remoteMessage.notification?.body ?? '내용 없음'
+      );
+    });
 
   registerFCMToken(1);
 
@@ -35,9 +23,7 @@ const App: React.FC = () => {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Permission: {permissionStatus}</Text>
-      <Text>Expo Push Token:</Text>
-      <Text selectable>{expoPushToken ?? '발급 대기 중...'}</Text>
+      <Text>Firebase 푸시 테스트</Text>
     </View>
   );
 };
