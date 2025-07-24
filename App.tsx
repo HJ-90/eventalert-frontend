@@ -4,7 +4,16 @@ import { Text, View, StyleSheet } from 'react-native';
 import { usePushNotifications } from './src/hooks/usePushNotifications';  // 경로 확인
 import { useEffect } from 'react';
 import * as Notifications from 'expo-notifications';
+import { registerFCMToken } from './src/firebase/registerFCMToken';
 
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,   // 🔔 포그라운드에서도 표시하게 만듦
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 const App: React.FC = () => {
   const { expoPushToken, permissionStatus } = usePushNotifications();
@@ -12,10 +21,14 @@ const App: React.FC = () => {
 
   useEffect(() => {
       const subscription = Notifications.addNotificationReceivedListener(
-          (notification: Notification) => {
-          console.log('🔔 알림 수신:', notification);
-      }
-  );
+          notification => {
+                const title = notification.request.content.title;
+                const body = notification.request.content.body;
+                console.log('🔔 알림 수신:', notification);
+                Alert.alert(title ?? '알림', body ?? '내용 없음');
+      });
+
+  registerFCMToken(1);
 
       return () => subscription.remove();
     }, []);
