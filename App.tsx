@@ -1,17 +1,13 @@
-// ① React import: TSX 문법 지원을 위해 React 타입 불러오기
-import React from 'react';
-import { Text, View, StyleSheet, Alert } from 'react-native';
-import { useEffect } from 'react';
-import { registerFCMToken } from './src/firebase/registerFCMToken';
+import React, { useEffect } from 'react';
+import { Alert, SafeAreaView } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
-
-
+import { registerFCMToken } from './src/firebase/registerFCMToken';
+import AppNavigator from './src/navigation/AppNavigator'; // 여기만 렌더링!
 
 const App: React.FC = () => {
   useEffect(() => {
-      console.log('🔥 App started')
+    console.log('🔥 App started');
 
-    // FCM 수신 리스너
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('📩 FCM 수신:', remoteMessage);
       Alert.alert(
@@ -20,25 +16,16 @@ const App: React.FC = () => {
       );
     });
 
-  registerFCMToken(1);
+    registerFCMToken(1);
 
-      return () => unsubscribe();
-    }, []);
+    return () => unsubscribe();
+  }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Firebase 푸시 테스트</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <AppNavigator />
+    </SafeAreaView>
   );
 };
 
 export default App;
-
-// ③ 스타일 시트에 타입 안전하게 정의
-const styles = StyleSheet.create({
-  container: {
-    flex: 1 as number,
-    alignItems: 'center' as const,
-    justifyContent: 'center' as const,
-  },
-});
